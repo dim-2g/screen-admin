@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './components/home';
 import Projects from './components/projects';
 import Nav from './components/nav';
+import Detail from './components/detail';
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/projects' component={Projects} />
+          <Route path='/detail/:id' component={Detail} />
         </Switch>
       </Fragment>
     );

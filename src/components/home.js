@@ -3,13 +3,14 @@ import '../App.css';
 import Pager from 'react-pager';
 import Loader from './loader';
 import Axios from 'axios';
-import Row from './table/row';
+import Table from './table/table';
 
 class Home extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             pages: null,
+            searchQuery: '',
             pagination: {
                 perPage: 50,
                 total: null,
@@ -20,6 +21,28 @@ class Home extends React.Component {
             loadData: false,
         }
         this.handlePageChanged = this.handlePageChanged.bind(this);
+        this.checkOneUrl = this.checkOneUrl.bind(this);
+    }
+    checkOneUrl(e, id) {
+        e.preventDefault();
+        console.log(`Проверить конкретный урл ${id}`);
+        const pages = this.state.pages.map(item => {
+            if (item.id == id) {
+                item.loading = true;
+            }
+            return item;
+        });
+        this.setState({pages: pages});
+        Axios.get(`http://uto-screen.demis.ru/once?id=${id}`)
+            .then(res => {
+                console.log('Обновим данные');
+                console.log(res);
+                const {currentPage, perPage} = this.state.pagination;
+                this.getPosts(perPage, currentPage);
+            })
+            .catch(error => {
+                console.log(`Ошибка API: ${error}`);
+            })
     }
     handlePageChanged(newPage) {
         //console.log(`Клик по странице ${newPage} пагинации`);
@@ -34,16 +57,15 @@ class Home extends React.Component {
         });
     }
     getPosts(limit, currentPage = 1) {
-        console.log(`Итого ${currentPage} - ${limit}`);
         this.setState({ loading: true })
-        Axios.get(`http://otp.demis.ru/app/web/srceenshotter/find-pages?page=${currentPage}&limit=${limit}`)
+        Axios.get(`http://otp.demis.ru/app/web/srceenshotter/find-pages?page=${currentPage}&limit=${limit}&term=${this.state.searchQuery}`)
             .then(res => {
                 console.log(res.data);
                 this.setState({
                     pagination: {
                         ...this.state.pagination,
                         total: res.data.total
-                    }, 
+                    },
                     pages: res.data.pages,
                     loadData: true,
                     loading: false
@@ -54,7 +76,6 @@ class Home extends React.Component {
             })
     }
     componentDidMount() {
-        console.log('Начинаем подгрузку данных');
         const {currentPage, perPage} = this.state.pagination;
         this.getPosts(perPage, currentPage);
         //
@@ -64,42 +85,15 @@ class Home extends React.Component {
         return (
             <div className="App">
                 {this.state.loading && <Loader />}
-                
-                
                 <div className="container">
-                    <h4>Отслеживаемые страницы</h4>
-                    <table className="table table-pages">
-                        <thead className="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Страница</th>
-                                <th scope="col">Дата проверки</th>
-                                <th scope="col">Результат</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.pages && this.state.pages.map(item => {
-                            return (
-                                <Row
-                                    key={item.id} 
-                                    {...item}
-                                />
-                            );
-                        })}    
-                        </tbody>
-                    </table>
-                    <div className="row justify-content-md-center">
-                        {this.state.loadData && 
-                            <Pager
-                                total={pagination.total}
-                                current={pagination.currentPage - 1}
-                                visiblePages={pagination.visiblePage}
-                                
-                                className="pagination-sm pull-right"
-                                onPageChanged={this.handlePageChanged}
-                            />
-                        }
-                    </div>
+                    <h4 className="page-header">Отслеживаемые страницы</h4>
+                    <Table
+                        loadData={this.state.loadData}
+                        pages={this.state.pages}
+                        pagination={this.state.pagination}
+                        handlePageChanged={this.handlePageChanged}
+                        checkOneUrl={this.checkOneUrl}
+                    />
                 </div>
             </div>
         );

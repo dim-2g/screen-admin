@@ -106,3 +106,16 @@
 .table-pages td, .table-pages th {
   padding: .5rem .75rem;
 }
+
+.navbar-brand img{
+  margin-right: 10px;
+}
+
+.page-header{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.actions{
+  margin: 40px 0;
+}

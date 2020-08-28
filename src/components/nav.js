@@ -6,7 +6,10 @@ const Nav = () => {
         <div className="header">
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div className="container">
-                    <a className="navbar-brand">ScreenShotter</a>
+                    <a className="navbar-brand">
+                        <img src="/logo.png" alt="" className="d-inline-block align-top" alt="" loading="lazy"/>
+                        ScreenShotter
+                    </a>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
