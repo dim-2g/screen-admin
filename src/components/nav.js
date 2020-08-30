@@ -12,11 +12,14 @@ const Nav = () => {
                     </a>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active">
+                            <li className="nav-item">
                                 <Link to='/' className="nav-link">Страницы</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to='/projects' className="nav-link">Проекты</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/add' className="nav-link">Добавить адрес</Link>
                             </li>
                         </ul>
                         <form className="form-inline my-2 my-lg-0">

@@ -7,6 +7,7 @@ import Home from './components/home';
 import Projects from './components/projects';
 import Nav from './components/nav';
 import Detail from './components/detail';
+import Add from './components/add';
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Nav />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route path='/add' component={Add} />
           <Route path='/projects' component={Projects} />
           <Route path='/detail/:id' component={Detail} />
         </Switch>

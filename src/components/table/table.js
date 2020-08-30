@@ -17,6 +17,7 @@ const Table = (props) => {
                         <Row
                             key={item.id}
                             checkOneUrl={props.checkOneUrl}
+                            deleteUrl={props.deleteUrl}
                             {...item}
                         />
                     );

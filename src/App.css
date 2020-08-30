@@ -119,3 +119,26 @@
 .actions{
   margin: 40px 0;
 }
+
+.btn-recheck{
+  margin-left: 15px;
+}
+
+.detail-params{
+  font-size: 12px;
+  line-height: 110%;
+}
+.error-text, .text-muted.error-text{
+  color: red !important;
+}
+.btn-action{
+  padding: 3px;
+  line-height: 0px;
+  margin: 0 2px;
+}
+.btn-action svg{
+  font-size: 13px;
+}
+.App .badge{
+  font-size: 10px;
+}

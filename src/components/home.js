@@ -22,6 +22,32 @@ class Home extends React.Component {
         }
         this.handlePageChanged = this.handlePageChanged.bind(this);
         this.checkOneUrl = this.checkOneUrl.bind(this);
+        this.deleteUrl = this.deleteUrl.bind(this);
+        this.deleteUrlRequest = this.deleteUrlRequest.bind(this);
+    }
+    deleteUrl(e, id) {
+        const page = this.state.pages.find(item => item.id == id);
+        if (page) {
+            const conf = window.confirm(`Вы точно хотите далить адрес ${page.url}, шириной экрана ${page.width}?`);
+            if (conf) {
+                this.setState({ loading: true });
+                this.deleteUrlRequest(page.id)
+                    .then(res => {
+                        console.log(res);
+                        this.setState({ loading: false });
+                        const {currentPage, perPage} = this.state.pagination;
+                        this.getPosts(perPage, currentPage);
+                    })
+                    .catch(error => {
+                        console.log('Ошибка API ', error);
+                    })
+            }
+        } else {
+            return null;
+        }
+    }
+    deleteUrlRequest(id) {
+        return Axios.get(`http://otp.demis.ru/app/web/srceenshotter/delete-task?id=${id}`)
     }
     checkOneUrl(e, id) {
         e.preventDefault();
@@ -93,6 +119,7 @@ class Home extends React.Component {
                         pagination={this.state.pagination}
                         handlePageChanged={this.handlePageChanged}
                         checkOneUrl={this.checkOneUrl}
+                        deleteUrl={this.deleteUrl}
                     />
                 </div>
             </div>
