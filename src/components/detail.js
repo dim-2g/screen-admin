@@ -11,10 +11,13 @@ class Detail extends React.Component{
             result: null,
             loading: false,
             imgHost: 'http://uto-screen.demis.ru',
+            issue: null,
+            updateSuccess: false,
         }
         this.getData = this.getData.bind(this);
         this.setEtalon = this.setEtalon.bind(this);
         this.reCheck = this.reCheck.bind(this);
+        this.setIssue = this.setIssue.bind(this)
     }
     reCheck(e, id) {
         this.setState({ loading: true, data: null, result: null });
@@ -29,16 +32,30 @@ class Detail extends React.Component{
     }
     setEtalon(e, id) {
         e.preventDefault();
-        console.log(`Установка эталона для ${id}`);
+        this.setState({ loading: true });
         Axios.get(`http://uto-screen.demis.ru/update?id=${id}`)
             .then(res => {
-                console.log('Обновим данные');
-                console.log(res);
+                this.setState({updateSuccess: true, loading: false});
                 this.getData(this.state.id);
             })
             .catch(error => {
                 console.log(`Ошибка API: ${error}`);
             })
+    }
+    setIssue(e, id) {
+        this.setState({ loading: true });
+        Axios.get(`http://otp.demis.ru/app/web/srceenshotter/set-issue?id=${id}`)
+            .then(res => {
+                this.setState({
+                    loading: false,
+                    issue: res.data.issue,
+                });
+
+            })
+            .catch(error => {
+                console.log(`Ошибка API: ${error}`);
+            })
+
     }
     getData(id) {
         this.setState({ loading: true })
@@ -46,7 +63,6 @@ class Detail extends React.Component{
             .then(res => {
                 if (res.data && res.data.body) {
                     const data = JSON.parse(res.data.body);
-                    console.log('data: ', data);
                     this.setState({data: res.data, result: data.result});
                 }
                 this.setState({loading: false});
@@ -61,9 +77,7 @@ class Detail extends React.Component{
         return  `${this.state.imgHost}${image}?${date.getTime()}`;
     }
     componentDidMount() {
-        //const id = this.props.match.params.id;
-        //this.setState({id: id}, () => {})
-        console.log('Подгрузим данные для id ', this.state.id);
+        this.setState({issue: null, updateSuccess: false});
         this.getData(this.state.id);
     }
     render() {
@@ -74,8 +88,38 @@ class Detail extends React.Component{
                 <div className="container">
                     <h4 className="page-header">
                         Детальный просмотр задания {this.state.id} 
-                        <button type="button" class="btn btn-success btn-sm btn-recheck" onClick={e => this.reCheck(e, this.state.id)}>Перепроверить</button>
+                        <button
+                            type="button"
+                            className="btn btn-success btn-sm btn-recheck"
+                            onClick={e => this.reCheck(e, this.state.id)}
+                        >
+                            Перепроверить
+                        </button>
+                        <button
+                            className="btn btn-secondary btn-sm"
+                            title="Сделать эталоном"
+                            onClick={e => this.setEtalon(e, this.state.id)}
+                        >
+                            Обновить эталон
+                        </button>
+                        <button
+                            className="btn btn-info btn-sm"
+                            title="Выставить задачу на основного исполнителя"
+                            onClick={e => this.setIssue(e, this.state.id)}
+                        >
+                            Выставить задачу
+                        </button>
                     </h4>
+                    {this.state.issue && (
+                        <div class="alert alert-success" role="alert">
+                            Выставлена задача <a target="_blank" href={`https://tm.demis.ru/issues/${this.state.issue}`}>#{this.state.issue}</a>
+                        </div>
+                    )}
+                    {this.state.updateSuccess && (
+                        <div class="alert alert-success" role="alert">
+                            Эталон успешно обновлен
+                        </div>
+                    )}
                     {result && (
                         <Fragment>
                             <div className="detail-params">
@@ -88,6 +132,9 @@ class Detail extends React.Component{
                             <div className="row">
                                 <div className="col">
                                     <div className="card" style={{width: '18rem'}}>
+                                        <div className="card-header">
+                                            <p className="card-text">Эталон</p>
+                                        </div>
                                         <a href={this.getImage(result.screenBefore)} data-fancybox="">
                                             <img src={this.getImage(result.screenBefore)} className="card-img-top" alt="..." />
                                         </a>
@@ -103,33 +150,24 @@ class Detail extends React.Component{
                                 </div>
                                 <div className="col">
                                     <div className="card" style={{width: '18rem'}}>
+                                        <div className="card-header">
+                                            <p className="card-text">Последний снимок</p>
+                                        </div>
                                         <a href={this.getImage(result.screenAfter)} data-fancybox="">
                                             <img src={this.getImage(result.screenAfter)} className="card-img-top" alt="..." />
                                         </a>
-                                        <div className="card-body">
-                                            <p className="card-text">Последний снимок</p>
-                                        </div>
                                         <div className="card-footer">
                                             <div className="card-text">
-                                                <div className="row">
-                                                    <div className="col">
-                                                        <small className="text-muted">{this.state.data.check_date}</small>
-                                                    </div>
-                                                    <div className="col">
-                                                        <a 
-                                                            href="#" 
-                                                            className="btn btn-secondary" 
-                                                            title="Сделать эталоном"
-                                                            onClick={e => this.setEtalon(e, this.state.id)}
-                                                        >Установить</a>
-                                                    </div>
-                                                </div>
+                                                <p><small className="text-muted">{this.state.data.check_date}</small></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="card" style={{width: '18rem'}}>
+                                        <div className="card-header">
+                                            <p className="card-text">Различия</p>
+                                        </div>
                                         <a href={this.getImage(result.screenDiff)} data-fancybox="">
                                         <img src={this.getImage(result.screenDiff)} className="card-img-top" alt="..." />
                                         </a>
