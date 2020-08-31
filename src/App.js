@@ -8,6 +8,7 @@ import Projects from './components/projects';
 import Nav from './components/nav';
 import Detail from './components/detail';
 import Add from './components/add';
+import Promo from './components/promo';
 
 class App extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class App extends React.Component {
           <Route path='/add' component={Add} />
           <Route path='/projects' component={Projects} />
           <Route path='/detail/:id' component={Detail} />
+          <Route path='/promo' component={Promo} />
         </Switch>
       </Fragment>
     );

@@ -6,7 +6,7 @@ const Nav = () => {
         <div className="header">
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div className="container">
-                    <a className="navbar-brand">
+                    <a className="navbar-brand" href="/">
                         <img src="/logo.png" alt="" className="d-inline-block align-top" alt="" loading="lazy"/>
                         ScreenShotter
                     </a>
@@ -20,6 +20,9 @@ const Nav = () => {
                             </li>
                             <li className="nav-item">
                                 <Link to='/add' className="nav-link">Добавить адрес</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to='/promo' className="nav-link">Массово добавить</Link>
                             </li>
                         </ul>
                         <form className="form-inline my-2 my-lg-0">

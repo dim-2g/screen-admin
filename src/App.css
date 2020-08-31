@@ -142,3 +142,38 @@
 .App .badge{
   font-size: 10px;
 }
+
+
+.remove-btn {
+  margin-right: 0.5rem;
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+.table input[type="text"] {
+  border: 1px solid #eaeaea;
+  padding: 4px 12px;
+  text-align: center;
+}
+.results__url{
+  width: 100%;
+}
+.results__url input[type="text"]{
+  width: 100%;
+  text-align: left;
+}
+.col__domain{
+  width: 100%;
+}
