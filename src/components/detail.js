@@ -10,7 +10,7 @@ class Detail extends React.Component{
             data: null,
             result: null,
             loading: false,
-            imgHost: 'http://uto-screen.demis.ru',
+            imgHost: 'http://screenshotter.demis.ru',
             issue: null,
             updateSuccess: false,
         }
@@ -21,7 +21,7 @@ class Detail extends React.Component{
     }
     reCheck(e, id) {
         this.setState({ loading: true, data: null, result: null });
-        Axios.get(`http://uto-screen.demis.ru/once?id=${id}`)
+        Axios.get(`http://screenshotter.demis.ru/once?id=${id}`)
             .then(res => {
                 this.getData(this.state.id);
                 this.setState({ loading: false });
@@ -33,7 +33,7 @@ class Detail extends React.Component{
     setEtalon(e, id) {
         e.preventDefault();
         this.setState({ loading: true });
-        Axios.get(`http://uto-screen.demis.ru/update?id=${id}`)
+        Axios.get(`http://screenshotter.demis.ru/update?id=${id}`)
             .then(res => {
                 this.setState({updateSuccess: true, loading: false});
                 this.getData(this.state.id);
