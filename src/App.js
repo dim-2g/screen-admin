@@ -9,6 +9,7 @@ import Nav from './components/nav';
 import Detail from './components/detail';
 import Add from './components/add';
 import Promo from './components/promo';
+import Main from "./components/main";
 
 class App extends React.Component {
   render() {
@@ -16,11 +17,12 @@ class App extends React.Component {
       <Fragment>
         <Nav />
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/add' component={Add} />
-          <Route path='/projects' component={Projects} />
-          <Route path='/detail/:id' component={Detail} />
-          <Route path='/promo' component={Promo} />
+            <Route exact path='/' component={Home} />
+            <Route path='/add' component={Add} />
+            <Route path='/projects' component={Projects} />
+            <Route path='/detail/:id' component={Detail} />
+            <Route path='/promo' component={Promo} />
+            <Route path='/main' component={Main} />
         </Switch>
       </Fragment>
     );

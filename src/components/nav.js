@@ -24,6 +24,9 @@ const Nav = () => {
                             <li className="nav-item">
                                 <Link to='/promo' className="nav-link">Массово добавить</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to='/main' className="nav-link">Новая главная</Link>
+                            </li>
                         </ul>
 
                     </div>
