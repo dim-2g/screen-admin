@@ -25,7 +25,7 @@ const Table = (props) => {
                 </tbody>
             </table>
             <div className="row justify-content-md-center">
-            {props.loadData &&
+            {props.loadData && pagination.total > 1 &&
                     <Pager
                         total={pagination.total}
                         current={pagination.currentPage - 1}

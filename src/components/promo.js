@@ -162,7 +162,7 @@ class Promo extends React.Component {
         console.log(e.target.value);
         const newState = [...this.state.resolutions];
         newState.map((item) => {
-            if (item.width == e.target.value) {
+            if (item.width === e.target.value) {
                 item.active = e.target.checked;
             }
             return item;
@@ -205,7 +205,7 @@ class Promo extends React.Component {
         });
     }
     deleteRow(e, key) {
-        const results = this.state.results.filter((item, index) => index != key);
+        const results = this.state.results.filter((item, index) => index !== key);
         this.setState({results: results})
     }
     addToService() {
@@ -237,7 +237,7 @@ class Promo extends React.Component {
     }
     changeResultthreshold(e, key) {
         const results = this.state.results.map((item, index) => {
-            if (key == index) {
+            if (key === index) {
                 item.threshold = e.target.value.replace(',','.');
             }
             return item;
@@ -246,7 +246,7 @@ class Promo extends React.Component {
     }
     changeResultUrl(e, key) {
         const results = this.state.results.map((item, index) => {
-            if (key == index) {
+            if (key === index) {
                 item.url = e.target.value.trim();
             }
             return item;
@@ -255,7 +255,7 @@ class Promo extends React.Component {
     }
     changeResultResolution(e, key) {
         const results = this.state.results.map((item, index) => {
-            if (key == index) {
+            if (key === index) {
                 item.resolution = e.target.value.trim();
             }
             return item;
@@ -274,7 +274,7 @@ class Promo extends React.Component {
             <div className="App">
                 {this.state.loading && <Loader />}
                 <div className="container">
-                    <h2>Управление страницами для отслеживания</h2>
+                    <h4 className="page-header">Управление страницами для отслеживания</h4>
                 </div>
                 {this.state.successAdd && (
                     <div className="container">

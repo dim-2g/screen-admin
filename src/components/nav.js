@@ -7,7 +7,7 @@ const Nav = () => {
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div className="container">
                     <a className="navbar-brand" href="/">
-                        <img src="/logo.png" alt="" className="d-inline-block align-top" alt="" loading="lazy"/>
+                        <img src="/logo.png" alt="" className="d-inline-block align-top" loading="lazy"/>
                         ScreenShotter
                     </a>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,7 +25,7 @@ const Nav = () => {
                                 <Link to='/promo' className="nav-link">Массово добавить</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/main' className="nav-link">Новая главная</Link>
+                                <Link to='/queue' className="nav-link">Очередь</Link>
                             </li>
                         </ul>
 

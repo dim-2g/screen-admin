@@ -1,4 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0166d211-e34b-4f99-a0d8-d73cd46e6d23" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Alert.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SearchForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dimension.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/edit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/project.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/queue/queue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/queue/queue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/screens.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/promo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/promo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table/row.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/row.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/pagesReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/pagesReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1giyzPMzumzDwlQ7PbDkqG1MJvd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\sites\screenshotter\screen-admin\src\components\queue" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0166d211-e34b-4f99-a0d8-d73cd46e6d23" name="Default Changelist" comment="" />
+      <created>1600454453620</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600454453620</updated>
+      <workItem from="1600454460328" duration="5872000" />
+      <workItem from="1600514689477" duration="13728000" />
+      <workItem from="1600600899203" duration="12596000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="461" y="163" key="SettingsEditor" timestamp="1600624850126">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1600624850126" />
+    <state x="656" y="252" width="607" height="536" key="find.popup" timestamp="1600524260667">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1600524260667" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600631304271">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1280.680@0.0.1920.1040" timestamp="1600631304271" />
+  </component>
 </project>

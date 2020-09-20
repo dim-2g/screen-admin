@@ -1,0 +1,23 @@
+.queue-item{
+    /*display: flex;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    */
+}
+.queue-item__th{
+    font-weight: bold;
+}
+.queue-item__id{
+    min-width: 30px;
+}
+.queue-item__date{
+    min-width: 180px;
+}
+.queue-item__url{
+    min-width: 300px;
+}
+
+.page-header .spinner-border{
+    vertical-align: middle;
+}

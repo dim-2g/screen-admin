@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-import Pager from 'react-pager';
 import Loader from './loader';
 import Axios from 'axios';
 import Table from './table/table';
@@ -26,7 +25,7 @@ class Home extends React.Component {
         this.deleteUrlRequest = this.deleteUrlRequest.bind(this);
     }
     deleteUrl(e, id) {
-        const page = this.state.pages.find(item => item.id == id);
+        const page = this.state.pages.find(item => item.id === id);
         if (page) {
             const conf = window.confirm(`Вы точно хотите далить адрес ${page.url}, шириной экрана ${page.width}?`);
             if (conf) {
@@ -53,7 +52,7 @@ class Home extends React.Component {
         e.preventDefault();
         console.log(`Проверить конкретный урл ${id}`);
         const pages = this.state.pages.map(item => {
-            if (item.id == id) {
+            if (item.id === id) {
                 item.loading = true;
             }
             return item;
@@ -113,6 +112,7 @@ class Home extends React.Component {
                 {this.state.loading && <Loader />}
                 <div className="container">
                     <h4 className="page-header">Отслеживаемые страницы</h4>
+
                     <Table
                         loadData={this.state.loadData}
                         pages={this.state.pages}

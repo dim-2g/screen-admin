@@ -4,7 +4,8 @@ import {
     PAGES_LOADING_HIDE,
     PAGES_LOADED,
     SET_CURRENT_PAGE,
-    SET_LOADING_ROW
+    SET_LOADING_ROW,
+    SET_SEARCH_QUERY
 } from "./types";
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
         perPage: 50,
         total: null,
         currentPage: 1,
-        visiblePage: 30,
+        visiblePage: 10,
     },
     loading: false,
     loadData: false,
@@ -41,12 +42,16 @@ export const pagesReducer = (state = initialState, action) => {
         case SET_LOADING_ROW:
             const {id, loading} = action.payload;
             const pages = state.pages.map(item => {
-                if (item.id == id) {
+                if (item.id === id) {
                     item.loading = loading;
                 }
                 return item;
             });
             state.pages = pages.slice();
+            break;
+        case SET_SEARCH_QUERY:
+            state.searchQuery = action.payload;
+            state.pagination.currentPage = 1;
             break;
     }
     return state;

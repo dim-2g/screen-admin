@@ -120,10 +120,6 @@
   margin: 40px 0;
 }
 
-.btn-recheck{
-  margin-left: 15px;
-}
-
 .detail-params{
   font-size: 12px;
   line-height: 110%;
@@ -176,4 +172,20 @@
 }
 .col__domain{
   width: 100%;
+}
+
+.search-query-alert{
+  margin-top: 15px;
+}
+
+.page-col__controls{
+  white-space: nowrap;
+}
+
+.edit__debug{
+  margin-bottom: 20px;
+}
+
+.btn-group-page{
+  margin-bottom: 15px;
 }

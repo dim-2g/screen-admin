@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Axios from 'axios';
 import Loader from './loader';
+import {Link} from "react-router-dom";
 
 class Projects extends React.Component{
     constructor(props) {
@@ -39,16 +40,18 @@ class Projects extends React.Component{
                     <h4 className="page-header">Проекты</h4>
                     <table className="table table-pages">
                         <thead className="thead-light">
-                            <th>id</th>
-                            <th>Название</th>
-                            <th>Кол-во страниц</th>
+                            <tr>
+                                <th>id</th>
+                                <th>Название</th>
+                                <th>Кол-во страниц</th>
+                            </tr>
                         </thead>
                         <tbody>
                         {this.state.projects && this.state.projects.map(item => {
                             return (
-                                <tr>
+                                <tr key={item.project_id}>
                                     <td>{item.project_id}</td>
-                                    <td>{item.name}</td>
+                                    <td><Link to={`/project/${item.project_id}`}>{item.name}</Link></td>
                                     <td>{item.count}</td>
                                 </tr>
                             );

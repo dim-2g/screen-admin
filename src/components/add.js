@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import {debounce} from 'lodash';
 import Axios from 'axios';
+import dimensions from './dimension';
 
 class Add extends React.Component {
     constructor(props){
@@ -13,44 +14,7 @@ class Add extends React.Component {
             width: null,
             errorUrlText: null,
             trueUrl: false,
-            dimensions: [
-                {
-                    width: 320,
-                    active: true,
-                    title: 'iphone5s, Nexus'
-                },
-                {
-                    width: 360,
-                    active: false,
-                    title: 'iphone6, iphone7, iphone8'
-                },
-                {
-                    width: 415,
-                    active: false,
-                    title: 'Samsung 9'
-                },
-                {
-                    width: 768,
-                    active: false,
-                    title: 'Ipad Vertical'
-                },
-                {
-                    width: 1024,
-                    active: false,
-                    title: 'Ipad Horizontal'
-                },
-                {
-                    width: 1280,
-                    active: false,
-                    title: 'Notebook'
-                },
-                {
-                    width: 1920,
-                    active: true,
-                    title: 'FullHd'
-                },
-            ]
-            ,
+            dimensions: dimensions,
             success: false,
         }
         this.findProject = debounce(this.findProject.bind(this), 500);
@@ -126,7 +90,7 @@ class Add extends React.Component {
     changeWidth(e, width) {
         
         const dimensions = this.state.dimensions.map(item => {
-            if (item.width == width) {
+            if (item.width === width) {
                 item.active = !item.active;
             }
             return item;
