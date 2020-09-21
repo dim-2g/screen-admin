@@ -57,7 +57,9 @@ const Edit = (props) => {
             try {
                 const res = await Axios.get(`http://otp.demis.ru/app/web/srceenshotter/find-task-once?id=${pageId}`);
                 let issue = {...res.data};
-                issue.body = JSON.parse(res.data.body);
+                if (res.data.body) {
+                    issue.body = JSON.parse(res.data.body);
+                }
                 setTask(issue);
             } catch (e) {
                 alert(`Что-то пошло не так`);

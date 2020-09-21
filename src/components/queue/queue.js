@@ -4,11 +4,14 @@ import Axios from "axios";
 import './queue.css';
 
 const Queue = () => {
-    const apiUrl = `http://otp.demis.ru/app/web/srceenshotter/find-queue?limit=20&timestamp=${new Date().getTime()}`;
+    const initialPeriod = 10;
+    const limit = 50;
+    const apiUrl = `http://otp.demis.ru/app/web/srceenshotter/find-queue?limit=${limit}&timestamp=${new Date().getTime()}`;
     const [tasks, setTasks] = useState([]);
+    const [countAllTasks, setCountAllTasks] = useState(0);
+    const [countAllActiveTasks, setCountAllActiveTasks] = useState(0);
     //const [timer, setTimer] = useState(null);
     const [loading, setLoading] = useState(false);
-    const initialPeriod = 10;
     const [period, setPeriod] = useState(initialPeriod);
 
     async function getQueue() {
@@ -17,6 +20,8 @@ const Queue = () => {
             const res = await Axios.get(apiUrl);
             setTasks(res.data.tasks);
             setLoading(false);
+            setCountAllTasks(res.data.all_count);
+            setCountAllActiveTasks(res.data.count);
         } catch (e) {
             alert(`Что-то пошло не так`);
             setLoading(false);
@@ -62,6 +67,7 @@ const Queue = () => {
             <h4 className="page-header">
                 Очередь заданий, которые выполнятся в ближайшее время ({indicator})
             </h4>
+            <p>Всего необработано заданий: {countAllActiveTasks} / {countAllTasks}</p>
             <div className="queue-list">
                 <table className="table table-pages">
                     <thead className="thead-light">
