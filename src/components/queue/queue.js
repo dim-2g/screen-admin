@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Axios from "axios";
 
 import './queue.css';
+import {Link} from "react-router-dom";
 
 const Queue = () => {
     const initialPeriod = 10;
@@ -84,7 +85,15 @@ const Queue = () => {
                             <tr className="queue-item" key={item.id}>
                                 <td>{index+1}</td>
                                 <td>{item.check_date}</td>
-                                <td>{item.url}</td>
+                                <td>
+                                    <Link
+                                        to={`/edit/${item.id}`}
+                                        className=""
+                                        title="Редактировать"
+                                    >
+                                        {item.url}
+                                    </Link>
+                                </td>
                                 <td>{item.width}</td>
                             </tr>
                         );

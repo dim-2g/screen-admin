@@ -151,6 +151,7 @@ class Detail extends React.Component{
                                 <p>Адрес страницы: {this.state.data.url}<br />
                                 Ширина экрана: {this.state.data.width}<br />
                                 Порог уведомлений: {this.state.data.threshold}<br />
+                                Дата проверки: {this.state.data.check_date}<br />
                                 Результат: {this.state.data.result}</p>
                             </div>
 

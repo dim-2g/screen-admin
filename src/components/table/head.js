@@ -7,6 +7,7 @@ const Head = (props) => {
             <th scope="col">Страница</th>
             <th scope="col">Дата проверки</th>
             <th scope="col">Ширина</th>
+            <th scope="col">Код ответа</th>
             <th scope="col">Порог</th>
             <th scope="col">Результат</th>
             <th scope="col">Действие</th>

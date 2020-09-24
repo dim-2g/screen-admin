@@ -12,9 +12,13 @@ const Row = (props) => {
         { 'badge-warning': props.threshold <=  props.result},
         { 'badge-secondary': props.result === 0}
     );
+    const badgeHttpCodeClass = classNames(
+        'badge',
+        { 'badge-danger': props.http_code ===  404}
+    );
     const detailUrl = `/detail/${props.id}`;
     const rowClass = classNames('', {'table-secondary': !props.active});
-
+    const code404Info = (props.http_code === 404) ? `(${props.count_not_200})` : null;
 
     return (
         <tr className={rowClass}>
@@ -22,6 +26,12 @@ const Row = (props) => {
             <td><Link to={detailUrl}>{props.url}</Link></td>
             <td>{props.check_date}</td>
             <td>{props.width}</td>
+            <td>
+                <span className={badgeHttpCodeClass}>
+                    {props.http_code}
+                    {code404Info}
+                </span>
+            </td>
             <td>{props.threshold}</td>
             <td>
                 {props.loading
