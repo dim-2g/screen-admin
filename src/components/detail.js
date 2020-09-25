@@ -7,6 +7,7 @@ import Screens from "./screens";
 class Detail extends React.Component{
     constructor(props) {
         super(props);
+        console.log('Конструктор');
         this.state = {
             id: props.match.params.id,
             data: null,
@@ -15,8 +16,11 @@ class Detail extends React.Component{
             imgHost: 'http://screenshotter.demis.ru',
             issue: null,
             updateSuccess: false,
-        }
+            prev: null,
+            next: null
+        };
         this.getData = this.getData.bind(this);
+        this.getSublingsTasks = this.getSublingsTasks.bind(this);
         this.setEtalon = this.setEtalon.bind(this);
         this.reCheck = this.reCheck.bind(this);
         this.setIssue = this.setIssue.bind(this)
@@ -74,6 +78,18 @@ class Detail extends React.Component{
                 console.log(`Ошибка API: ${error}`);
             })
     }
+    getSublingsTasks(id) {
+        Axios.get(`http://otp.demis.ru/app/web/srceenshotter/find-subling-tasks?id=${id}`)
+            .then(res => {
+
+                this.setState({prev: res.data.prev});
+                this.setState({next: res.data.next});
+
+            })
+            .catch(error => {
+                console.log(`Ошибка API: ${error}`);
+            })
+    };
     getImage(image) {
         const date = new Date();
         return  `${this.state.imgHost}${image}?${date.getTime()}`;
@@ -81,13 +97,54 @@ class Detail extends React.Component{
     componentDidMount() {
         this.setState({issue: null, updateSuccess: false});
         this.getData(this.state.id);
+        this.getSublingsTasks(this.state.id);
     }
+    shouldComponentUpdate2(nextProps){
+        console.log('shouldComponentUpdate');
+        return false;
+        /*
+        if(nextProps.id != this.state.id){
+            return nextProps;
+        } else {
+            return nextProps;
+        }*/
+    }
+
     render() {
+        console.log('state');
+        console.log(this.state);
+
         const {result} = this.state;
         return (
             <Fragment>
                 {this.state.loading && <Loader />}
+
                 <div className="container">
+                    <div className="sublings__nav">
+                        {this.state.prev && (
+                            <div className="sublings__prev">
+                                <a href="#" onClick={(e) => this.setState({id: this.state.next.id})}>Следующий</a>
+                                <Link
+                                    to={`/detail/${this.state.prev.id}`}
+                                    className="btn btn-info btn-sm"
+                                    title="Предыдущий"
+                                >
+                                Предыдущий {this.state.prev.id}
+                                </Link>
+                            </div>
+                        )}
+                        {this.state.next && (
+                            <div className="sublings__next">
+                                <Link
+                                    to={`/detail/${this.state.next.id}`}
+                                    className="btn btn-info btn-sm"
+                                    title="Следующий"
+                                >
+                                    Следующий {this.state.next.id}
+                                </Link>
+                            </div>
+                        )}
+                    </div>
                     <h4 className="page-header">
                         Детальный просмотр задания {this.state.id} 
                     </h4>
@@ -112,7 +169,7 @@ class Detail extends React.Component{
                         >
                             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-check"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
+                                <path fillRule="evenodd"
                                       d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
                             </svg>
                             &nbsp;

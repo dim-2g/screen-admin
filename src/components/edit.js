@@ -183,6 +183,15 @@ const Edit = (props) => {
                     </small>
                 </div>
 
+                <div className="form-group">
+                    <label htmlFor="exampleFormControlTextarea1">Пользовательские код JavaScript</label>
+                    <textarea className="form-control" id="commands" rows="3" name="commands" value={task.commands} onChange={setValue}></textarea>
+                    <small id="commandsHelp" className="form-text text-muted">
+                        Код JavaScript, который выполнится в консоли браузера. Например, можно закрыть ксплывающее окно, либо кликнуть а кнопку.<br />
+                        Например, $('.btn').click();
+                    </small>
+                </div>
+
                 <div className="form-group form-check">
                     <input
                         type="checkbox"
