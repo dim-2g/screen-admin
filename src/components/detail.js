@@ -121,7 +121,7 @@ class Detail extends React.Component{
 
                 <div className="container">
                     <div className="sublings__nav">
-                        {this.state.prev && (
+                        {false && this.state.prev && (
                             <div className="sublings__prev">
                                 <a href="#" onClick={(e) => this.setState({id: this.state.next.id})}>Следующий</a>
                                 <Link
@@ -133,7 +133,7 @@ class Detail extends React.Component{
                                 </Link>
                             </div>
                         )}
-                        {this.state.next && (
+                        {false && this.state.next && (
                             <div className="sublings__next">
                                 <Link
                                     to={`/detail/${this.state.next.id}`}
